@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_navigation_no_navigation_main"
+    app:startDestination="@id/marvelListFragment">
+
+    <fragment
+        android:id="@+id/marvelListFragment"
+        android:name="com.hiberus.mobile.android.openbanktest.app.marvel.master.MarvelListFragment"
+        android:label="Marvel"
+        tools:layout="@layout/fragment_marvel_list">
+        <action
+            android:id="@+id/action_marvelListFragment_to_marvelListDetailsFragment"
+            app:destination="@id/marvelListDetailsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/zoom_out"
+            app:popEnterAnim="@anim/zoom_in"
+            app:popExitAnim="@anim/exit_to_bottom" />
+    </fragment>
+    <fragment
+        android:id="@+id/marvelListDetailsFragment"
+        android:name="com.hiberus.mobile.android.openbanktest.app.marvel.detail.MarvelListDetailsFragment"
+        android:label="Marvel details"
+        tools:layout="@layout/fragment_marvel_list_details" />
+</navigation>

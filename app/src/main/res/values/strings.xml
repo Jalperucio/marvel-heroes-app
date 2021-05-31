@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Marvel Heroes App</string>
+
+    <!-- region General -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="press_back_again">Press back again to quit</string>
+    <string name="not_available_yet">Not available yet</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="about">About…</string>
+    <string name="about_text">Developed by <b>Alberto Navas Alba</b> from Hiberus (2021)</string>
+    <!-- endregion -->
+
+    <!-- region Marvel list -->
+    <string name="marvel_master_title">List of Heroes</string>
+    <!-- endregion -->
+
+    <!-- region Marvel details -->
+    <string name="marvel_details_title">Details</string>
+    <string name="marvel_details_comics_label">Comics: %1d</string>
+    <string name="marvel_details_series_label">Series: %1d</string>
+    <string name="marvel_details_stories_label">Stories: %1d</string>
+    <string name="marvel_details_events_label">Events: %1d</string>
+    <string name="marvel_details_detail">Detail</string>
+    <string name="marvel_details_wiki">Wiki</string>
+    <string name="marvel_details_comic">Comics</string>
+    <!-- endregion -->
+
+    <!-- region Error -->
+    <string name="error_default_message">Oops, there was an error fetching the data</string>
+    <string name="error_try_again">Try again</string>
+    <string name="error_dialog_title">Error</string>
+    <string name="error_support_code">Support code: %1$s</string>
+    <string name="error_no_connection">There is no Internet connection. Check your Wi-Fi or mobile data connection, please.</string>
+    <string name="error_connection_timeout">We are experiencing some temporary problems. Please, try again in a few moments.</string>
+    <string name="error_get_credentials">Get credentials request has failed.</string>
+    <!-- endregion -->
+
+    <!-- region Empty -->
+    <string name="empty_default_message">Oops, there are no results to display</string>
+    <string name="empty_check_again">Check again</string>
+    <!-- endregion -->
+</resources>

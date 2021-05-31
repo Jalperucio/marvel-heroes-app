@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorLightBackground</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <!-- ToolBar -->
+    <style name="AppTheme.Marvel.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+    <style name="AppTheme.Marvel.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <!-- See: https://guides.codepath.com/android/using-the-app-toolbar -->
+    <style name="AppTheme.Marvel.Toolbar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- Applies to views in their normal state. -->
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Marvel.Toolbar.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" >
+        <item name="android:colorBackground">@color/colorLightBackground</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+    </style>
+
+    <!-- Text -->
+    <style name="AppTheme.DefaultText" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="AppTheme.HeaderText" parent="AppTheme.DefaultText">
+        <item name="android:textAlignment" tools:targetApi="17">center</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+    </style>
+
+    <!-- Forms -->
+    <!-- TextInputLayout -->
+    <style name="AppTheme.ErrorText" parent="TextAppearance.AppCompat.Small">
+        <!-- Sets the color of the error text -->
+        <item name="android:textColor">@color/colorError</item>
+    </style>
+
+    <!-- Button -->
+    <style name="AppTheme.Button" parent="AppTheme.DefaultText">
+        <item name="android:textColor">@color/colorPrimaryTextLight</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccentDark</item>
+        <item name="android:layout_height">@dimen/forms_button_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+    </style>
+
+    <style name="AppTheme.Button.Accent">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
+    <style name="PrimaryButton.Rounded" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="iconTint">@android:color/white</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+</resources>

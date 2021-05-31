@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    testOptions.unitTests.includeAndroidResources = true
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+
+        applicationId globalConfiguration["androidApplicationId"]
+        versionCode globalConfiguration["androidVersionCode"]
+        versionName globalConfiguration["androidVersionName"]
+    }
+
+    dexOptions {
+        preDexLibraries false
+        dexInProcess false
+        javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"]
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'  //For removing warning about deep linking in Manifest, because this app do not use deep links
+    }
+
+    buildTypes {
+        debug {
+            manifestPlaceholders = [crashlyticsEnabled: false]
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            manifestPlaceholders = [crashlyticsEnabled: true]
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+
+    implementation project(':model')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':datasources')
+
+    coreLibraryDesugaring appDependencies.coreLibraryDesugaring
+
+    implementation appDependencies.kotlin
+    implementation appDependencies.koin
+    implementation appDependencies.koinCompile
+    implementation appDependencies.koinArch
+    implementation appDependencies.coreKtx
+    implementation appDependencies.androidAnnotation
+    implementation appDependencies.appcompat
+    implementation appDependencies.recyclerView
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.swipeRefresh
+    implementation appDependencies.materialDesign
+    implementation appDependencies.lifecycleCommonJava8
+    implementation appDependencies.lifecycleViewModel
+    implementation appDependencies.lifecycleLiveData
+    implementation appDependencies.navigationFragment
+    implementation appDependencies.navigationUi
+    implementation appDependencies.roomRuntime
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.rxKotlin
+    implementation appDependencies.glide
+    implementation appDependencies.timber
+    implementation platform(appDependencies.firebase)
+
+
+    //Development
+    debugImplementation developmentDependencies.leakCanary
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_marvel_heroes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_marvel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/marvel_master_list_padding"
+        android:paddingTop="@dimen/marvel_master_list_padding"
+        android:scrollbars="none" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- region Loading, error and empty views -->
+    <!-- These views are clickable and focusable to block user interaction -->
+    <com.hiberus.mobile.android.openbanktest.app.common.widget.loading.LoadView
+        android:id="@+id/lv_marvel_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <com.hiberus.mobile.android.openbanktest.app.common.widget.empty.EmptyView
+        android:id="@+id/ev_marvel_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <com.hiberus.mobile.android.openbanktest.app.common.widget.error.ErrorView
+        android:id="@+id/ev_marvel_error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+    <!-- endregion -->
+
+</FrameLayout>

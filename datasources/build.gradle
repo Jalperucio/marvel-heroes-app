@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    testOptions.unitTests.includeAndroidResources = true
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        multiDexEnabled = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    dexOptions {
+        preDexLibraries false
+        dexInProcess false
+        javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
+
+dependencies {
+    def dataSourceDependencies = rootProject.ext.dataSourceDependencies
+
+    implementation project(':data')
+    implementation project(':model')
+
+    coreLibraryDesugaring dataSourceDependencies.coreLibraryDesugaring
+
+    // Cache
+    implementation dataSourceDependencies.kotlin
+    implementation dataSourceDependencies.roomRuntime
+    kapt dataSourceDependencies.roomCompiler
+    implementation dataSourceDependencies.roomRxJava
+    implementation dataSourceDependencies.rxJava
+    implementation dataSourceDependencies.rxKotlin
+    implementation dataSourceDependencies.timber
+
+    // Remote
+    implementation dataSourceDependencies.retrofit
+    implementation dataSourceDependencies.retrofitConverter
+    implementation dataSourceDependencies.retrofitAdapter
+    implementation dataSourceDependencies.okHttp
+    implementation dataSourceDependencies.okHttpLogger
+    implementation dataSourceDependencies.gson
+
+}
